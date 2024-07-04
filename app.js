@@ -1,6 +1,7 @@
 import express from 'express'
 import createHomepageTemplate from './views/index.js'
 import createListTemplate from './views/list.js'
+import BOOKMARKS_DATA from './data/data.js'
 
 // create app
 const app = express()
@@ -15,6 +16,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/bookmarks', (req, res) => {
+	res.send(createListTemplate())
+})
+
+app.post('/bookmarks', (req, res) => {
+	const { title, url, label } = req.body
+	const id = Math.random().toString(36).substring(2, 15)
+
+	BOOKMARKS_DATA.push({ id, title, url, label })
 	res.send(createListTemplate())
 })
 

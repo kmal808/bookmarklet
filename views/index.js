@@ -16,7 +16,24 @@ const createHomepageTemplate = () => /*html*/ `
 
         <div class="add-bookmark-form">
           <h2>Enter or paste your link 🔗 to save to the list 😎</h2>
-          <!-- form template goes here -->
+          <form action="">
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+            />
+            <input
+              type="text"
+              name="url"
+              placeholder="https://example.com"
+            />
+            <input
+              type="text"
+              name="label"
+              placeholder="Label"
+            />
+            <button hx-post="/bookmarks" hx-target=".bookmark-list ul" hx-swap="beforeend">Add Bookmark</button>  
+          </form>
         </div>
       </main>
     </body>
